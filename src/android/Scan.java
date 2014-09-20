@@ -46,7 +46,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 			rcpAPI.setOnRcpEventListener(this);
 			// self.callbackContext.sendPluginResult(result);
 			boolean t = rcpAPI.open();
-			setVolumeMax();
+			// setVolumeMax();
 			boolean k = rcpAPI.startReadTagsWithRssi(maxTags, maxTime, repeatCycle);
 			// self.callbackContext("scan worked!");
 
