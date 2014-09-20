@@ -18,7 +18,7 @@
  SOFTWARE.
 */
 
-package com.sharinglabs.cordova.plugin.cache;
+package com.assettagz.cordova.plugin.scan;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -32,15 +32,15 @@ import android.app.Activity;
 import android.util.Log;
 
 @TargetApi(19)
-public class Cache extends CordovaPlugin
+public class Scan extends CordovaPlugin
 {
-	private static final String LOG_TAG = "Cache";
+	private static final String LOG_TAG = "Scan";
 	private CallbackContext callbackContext;
 
 	/**
 	 * Constructor.
 	 */
-	public Cache() {
+	public Scan() {
 
 	}
 
@@ -52,18 +52,15 @@ public class Cache extends CordovaPlugin
 		*/
 			if( action.equals("clear") )
 			{
-				Log.v(LOG_TAG,"Cordova Android Cache.clear() called.");
+				Log.v(LOG_TAG,"Cordova Android Scan called.");
 				this.callbackContext = callbackContext;
 				
-				final Cache self = this;
+				final Scan self = this;
 				cordova.getActivity().runOnUiThread( new Runnable() {
 					public void run()
 					{
 						try
-						{
-							// clear the cache
-							self.webView.clearCache(true);
-							
+						{						
 							// send success result to cordova
 							PluginResult result = new PluginResult(PluginResult.Status.OK);
 							result.setKeepCallback(false); 
@@ -71,7 +68,7 @@ public class Cache extends CordovaPlugin
 						}
 						catch( Exception e )
 						{
-							String msg = "Error while clearing webview cache.";
+							String msg = "Error while calling Scan.";
 							Log.e(LOG_TAG, msg );
 							
 							// return error answer to cordova
