@@ -50,7 +50,7 @@ public class Scan extends CordovaPlugin
 		/*try
 		{
 		*/
-			if( action.equals("clear") )
+			if( action.equals("read") )
 			{
 				Log.v(LOG_TAG,"Cordova Android Scan called.");
 				this.callbackContext = callbackContext;

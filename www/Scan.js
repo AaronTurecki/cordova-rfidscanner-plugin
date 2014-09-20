@@ -6,9 +6,9 @@ var exec = require('cordova/exec');
 
 var Scan =
 {
-    scan : function( success, error )
+    read : function( success, error )
     {
-        exec(success, error, "Scan", "scan", [])
+        exec(success, error, "Scan", "read", [])
     }
 }
 
