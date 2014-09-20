@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.sharinglabs.cordova.plugin.cache"
+    id="com.assettagz.cordova.plugin.scan"
     version="1.0.0">
 
   <name>RFID Scanner</name>
@@ -11,19 +11,19 @@
   <license>Apache 2.0</license>
   <author>NeoCode Software Solutions</author>
 
-    <js-module src="www/Cache.js" name="Cache">
-        <clobbers target="cache" /><!-- will be available under window.cache -->
+    <js-module src="www/Scan.js" name="Scan">
+        <clobbers target="scan" /><!-- will be available under window.cache -->
     </js-module>
 
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Cache" >
-                <param name="android-package" value="com.sharinglabs.cordova.plugin.cache.Cache"/>
+            <feature name="Scan" >
+                <param name="android-package" value="com.assettagz.cordova.plugin.scan.Scan"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/Cache.java" target-dir="src/com/sharinglabs/cordova/plugin/cache" />
+        <source-file src="src/android/Scan.java" target-dir="src/com/assettagz/cordova/plugin/scan" />
     </platform>
 
 </plugin>
