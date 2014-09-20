@@ -12,7 +12,7 @@
   <author>NeoCode Software Solutions</author>
 
     <js-module src="www/Scan.js" name="Scan">
-        <clobbers target="scan" /><!-- will be available under window.cache -->
+        <clobbers target="scan" />
     </js-module>
 
     <!-- android -->
