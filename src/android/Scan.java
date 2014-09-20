@@ -9,7 +9,14 @@ import org.json.JSONException;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Message;
 import android.util.Log;
+
+import com.phychips.rcp.*;
 
 @TargetApi(19)
 public class Scan extends CordovaPlugin implements iRcpEvent2,
