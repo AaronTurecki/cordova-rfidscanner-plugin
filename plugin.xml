@@ -24,7 +24,7 @@
         </config-file>
 
         <source-file src="src/android/Scan.java" target-dir="src/com/assettagz/cordova/plugin/scan" />
-        <source-file src="lib/android/A100_AL1001-23_AndroidLibrary.jar" target-dir="libs"/>
+        <source-file src="lib/android/A100_AL1001-23_AndroidLibrary.jar" target-dir="lib"/>
     </platform>
 
 </plugin>
