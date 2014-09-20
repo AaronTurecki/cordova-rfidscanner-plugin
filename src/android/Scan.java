@@ -39,27 +39,29 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	public boolean execute (String action, JSONArray args, CallbackContext callbackContext) throws JSONException
 	{
 
-			if( action.equals("read") )
-			{
-				this.callbackContext = callbackContext;
+		if( action.equals("read") )
+		{
+
+			RcpApi2 rcpAPI = RcpApi2.getInstance();
+			rcpAPI.setOnRcpEventListener(this);
+			// self.callbackContext.sendPluginResult(result);
+			boolean t = rcpAPI.open();
+			setVolumeMax();
+			boolean k = rcpAPI.startReadTagsWithRssi(maxTags, maxTime, repeatCycle);
+			// self.callbackContext("scan worked!");
+
+			// this.callbackContext = callbackContext;
 				
-				final Scan self = this;
-				cordova.getActivity().runOnUiThread( new Runnable() {
-					public void run()
-					{
-						try
-						{						
+				// final Scan self = this;
+				// cordova.getActivity().runOnUiThread( new Runnable() {
+				// 	public void run()
+				// 	{
+				// 		try
+				// 		{						
 							// send success result to cordova
 							// PluginResult result = new PluginResult(PluginResult.Status.OK);
 							// result.setKeepCallback(false); 
-							RcpApi2 rcpAPI = RcpApi2.getInstance();
-							rcpAPI.setOnRcpEventListener(this);
-							// self.callbackContext.sendPluginResult(result);
-							boolean t = rcpAPI.open();
-							setVolumeMax();
-							boolean k = rcpAPI.startReadTagsWithRssi(maxTags,
-													maxTime, repeatCycle);
-							self.callbackContext("scan worked!");
+							
 
 							// try {
 								
@@ -86,20 +88,20 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 							// } catch (final Exception e) {
 							// 	e.printStackTrace();
 							// 	self.callbackContext.sendPluginResult(e.getMessage());
-							// }
-						}
-						catch( Exception e )
-						{			
-							// return error answer to cordova
-							PluginResult result = new PluginResult(PluginResult.Status.ERROR, msg);
-							result.setKeepCallback(false); 
-							self.callbackContext.sendPluginResult(result);
-						}
-					}
-				});
-				return true;
-			}
-			return false;
+						// 	// }
+						// }
+						// catch( Exception e )
+						// {			
+						// 	// return error answer to cordova
+						// 	PluginResult result = new PluginResult(PluginResult.Status.ERROR, msg);
+						// 	result.setKeepCallback(false); 
+						// 	self.callbackContext.sendPluginResult(result);
+						// }
+				}
+			});
+			return true;
+		}
+		return false;
 	}
 
 	@Override
