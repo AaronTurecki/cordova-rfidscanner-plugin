@@ -50,61 +50,11 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 			this.callbackContext = callbackContext;
 			callbackContext.success("success");
 
-			// RcpApi2 rcpAPI = RcpApi2.getInstance();
-			// rcpAPI.setOnRcpEventListener(this);
-			// // self.callbackContext.sendPluginResult(result);
-			// boolean t = rcpAPI.open();
+			RcpApi2 rcpAPI = RcpApi2.getInstance();
+			rcpAPI.setOnRcpEventListener(this);
+			boolean t = rcpAPI.open();
 			// // setVolumeMax();
-			// boolean k = rcpAPI.startReadTagsWithRssi(maxTags, maxTime, repeatCycle);
-			// self.callbackContext("scan worked!");
-
-			// this.callbackContext = callbackContext;
-				
-				// final Scan self = this;
-				// cordova.getActivity().runOnUiThread( new Runnable() {
-				// 	public void run()
-				// 	{
-				// 		try
-				// 		{						
-							// send success result to cordova
-							// PluginResult result = new PluginResult(PluginResult.Status.OK);
-							// result.setKeepCallback(false); 
-							
-
-							// try {
-								
-							// 	try {
-									
-							// 		if (t = true) {
-							// 			try {					
-											
-							// 				if (k = true) {		
-												
-							// 					return true;
-							// 				}
-							// 			} catch (final Exception e) {
-							// 				e.printStackTrace();
-							// 				self.callbackContext.sendPluginResult(e.getMessage());
-							// 			}
-							// 		} else {
-							// 			return false;
-							// 		}
-							// 	} catch (final Exception e) {
-							// 		e.printStackTrace();
-							// 		self.callbackContext.sendPluginResult(e.getMessage());
-							// 	}
-							// } catch (final Exception e) {
-							// 	e.printStackTrace();
-							// 	self.callbackContext.sendPluginResult(e.getMessage());
-						// 	// }
-						// }
-						// catch( Exception e )
-						// {			
-						// 	// return error answer to cordova
-						// 	PluginResult result = new PluginResult(PluginResult.Status.ERROR, msg);
-						// 	result.setKeepCallback(false); 
-						// 	self.callbackContext.sendPluginResult(result);
-						// }
+			boolean k = rcpAPI.startReadTagsWithRssi(maxTags, maxTime, repeatCycle);
 			
 			return true;
 		}
@@ -124,7 +74,6 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	}
 
 	@Override
-
     public void onFailureReceived(final int[] data) {
         // TODO Auto-generated method stub
 		
