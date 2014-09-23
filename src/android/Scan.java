@@ -7,7 +7,6 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.media.AudioManager;
@@ -18,7 +17,6 @@ import android.util.Log;
 
 import com.phychips.rcp.*;
 
-@TargetApi(19)
 public class Scan extends CordovaPlugin implements iRcpEvent2,
 		OnCompletionListener
 {
