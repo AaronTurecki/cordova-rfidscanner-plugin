@@ -38,17 +38,16 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	@Override
 	public boolean execute (String action, JSONArray args, CallbackContext callbackContext) throws JSONException
 	{
-
 		if( action.equals("read") )
 		{
 
 			AlertDialog.Builder builder1 = new AlertDialog.Builder(cordova.getActivity());
-			builder1.setMessage("success");
+			builder1.setMessage("success from alertbuilder");
 		    AlertDialog alert11 = builder1.create();
 			alert11.show();
 
 			this.callbackContext = callbackContext;
-			callbackContext.success("success");
+			callbackContext.success("success from callbackContext");
 
 			RcpApi2 rcpAPI = RcpApi2.getInstance();
 			rcpAPI.setOnRcpEventListener(this);
