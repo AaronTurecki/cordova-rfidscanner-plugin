@@ -6,12 +6,10 @@
 
   <name>RFID Scanner</name>
   <description>RFID Scanner for Assettagz</description>
+  <repo>https://github.com/AaronTurecki/cordova-plugin-rfidscanner.git</repo>
   <keywords>rfid,scanner,aretepop,cordova,android,assettagz</keywords>
+  <license>Apache 2.0</license>
   <author>NeoCode Software Solutions</author>
-
-  <engines>
-      <engine name="cordova" version=">=3.0.0" />
-    </engines>
 
     <js-module src="www/Scan.js" name="Scan">
         <clobbers target="scan" />
