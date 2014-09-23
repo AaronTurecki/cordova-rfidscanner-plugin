@@ -42,12 +42,20 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 		if( action.equals("read") )
 		{
 
-			RcpApi2 rcpAPI = RcpApi2.getInstance();
-			rcpAPI.setOnRcpEventListener(this);
-			// self.callbackContext.sendPluginResult(result);
-			boolean t = rcpAPI.open();
-			// setVolumeMax();
-			boolean k = rcpAPI.startReadTagsWithRssi(maxTags, maxTime, repeatCycle);
+			AlertDialog.Builder builder1 = new AlertDialog.Builder(cordova.getActivity());
+			builder1.setMessage("success");
+		    AlertDialog alert11 = builder1.create();
+			alert11.show();
+
+			this.callbackContext = callbackContext;
+			callbackContext.success("success");
+
+			// RcpApi2 rcpAPI = RcpApi2.getInstance();
+			// rcpAPI.setOnRcpEventListener(this);
+			// // self.callbackContext.sendPluginResult(result);
+			// boolean t = rcpAPI.open();
+			// // setVolumeMax();
+			// boolean k = rcpAPI.startReadTagsWithRssi(maxTags, maxTime, repeatCycle);
 			// self.callbackContext("scan worked!");
 
 			// this.callbackContext = callbackContext;
