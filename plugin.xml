@@ -6,10 +6,12 @@
 
   <name>RFID Scanner</name>
   <description>RFID Scanner for Assettagz</description>
-  <repo>https://github.com/AaronTurecki/cordova-plugin-rfidscanner.git</repo>
   <keywords>rfid,scanner,aretepop,cordova,android,assettagz</keywords>
-  <license>Apache 2.0</license>
   <author>NeoCode Software Solutions</author>
+
+  <engines>
+      <engine name="cordova" version=">=3.0.0" />
+    </engines>
 
     <js-module src="www/Scan.js" name="Scan">
         <clobbers target="scan" />
@@ -22,6 +24,17 @@
                 <param name="android-package" value="com.assettagz.cordova.plugin.scan.Scan"/>
             </feature>
         </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACTION_HEADSET_PLUG" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    </config-file>
 
         <source-file src="src/android/Scan.java" target-dir="src/com/assettagz/cordova/plugin/scan" />
         <source-file src="lib/android/A100_AL1001-23_AndroidLibrary.jar" target-dir="libs"/>

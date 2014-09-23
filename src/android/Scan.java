@@ -188,6 +188,8 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 		cordova.getActivity().runOnUiThread(new Runnable() {
             public void run(){
             	String dataText = RcpLib.int2str(data);
+
+            	this.callbackContext.success(dataText);
             	
             	AlertDialog.Builder builder1 = new AlertDialog.Builder(cordova.getActivity());
 				builder1.setMessage("TID: " + dataText);
