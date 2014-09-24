@@ -153,7 +153,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 				// AlertDialog alert11 = builder1.create();
 				// alert11.show();
 
-				callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.success), dataText);
+				callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK), dataText);
             }
         });
 	}
