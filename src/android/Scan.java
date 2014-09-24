@@ -148,6 +148,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	@Override
 	public void onTagMemoryReceived(final int[] data) {
 		// TODO Auto-generated method stub
+		this.callbackContext = callbackContext;
 		try {
 			cordova.getThreadPool().execute(new Runnable() {
             	public void run(){
@@ -155,7 +156,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 
               			PluginResult result = new PluginResult(PluginResult.Status.OK, dataText);
               			result.setKeepCallback(false);
-                        callbackContext.success(result);
+                        callbackContext.sendPluginResult(result);
             	}
         	});
 		}
