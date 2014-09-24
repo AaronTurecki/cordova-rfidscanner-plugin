@@ -216,7 +216,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	
     private void setVolumeMax()
     {
-    	AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+    	AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
 		if (audioManager.getStreamMaxVolume(android.media.AudioManager.STREAM_MUSIC) != audioManager
 				.getStreamVolume(android.media.AudioManager.STREAM_MUSIC))
