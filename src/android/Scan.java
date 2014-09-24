@@ -21,7 +21,7 @@ import com.phychips.rcp.*;
 public class Scan extends CordovaPlugin implements iRcpEvent2,
 		OnCompletionListener
 {
-	private CallbackContext callbackContext;
+	public CallbackContext callbackContext;
 	public int maxTags = 1;
 	public int maxTime = 100;
 	public int repeatCycle = 0;
@@ -148,10 +148,12 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
             public void run(){
             	String dataText = RcpLib.int2str(data);
             	
-            	AlertDialog.Builder builder1 = new AlertDialog.Builder(cordova.getActivity());
-				builder1.setMessage("TID: " + dataText);
-				AlertDialog alert11 = builder1.create();
-				alert11.show();
+    //         	AlertDialog.Builder builder1 = new AlertDialog.Builder(cordova.getActivity());
+				// builder1.setMessage("TID: " + dataText);
+				// AlertDialog alert11 = builder1.create();
+				// alert11.show();
+
+				callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.success), dataText);
             }
         });
 	}
@@ -170,10 +172,6 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 			public void run(){
 				String epc = toHexString(arg0).substring(4);
 				String rssi = Integer.toString(arg1);
-								
-//				int accessPassword = 0x000000;
-//				int startAddress = 0x0000;
-//				int targetLength = 0x02;
 
 				RcpApi2.getInstance().readFromTagMemory(
 						0, // Access Password
@@ -181,14 +179,6 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 						2, // TID
 						0, // Start
 						0); // Length
-				
-				Log.d("EPC:", epc);
-				Log.d("RSSI:", rssi);
-		
-				AlertDialog.Builder builder1 = new AlertDialog.Builder(cordova.getActivity());
-				builder1.setMessage("EPC: " + epc + "\nRSSI: " + rssi);
-				AlertDialog alert11 = builder1.create();
-				alert11.show();
 			}
         });
 	}
