@@ -147,7 +147,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	}
 
 	@Override
-	private void onTagMemoryReceived(final int[] data) {
+	public void onTagMemoryReceived(final int[] data) {
 		// TODO Auto-generated method stub
 		try {
 			cordova.getActivity().runOnUiThread(new Runnable() {
