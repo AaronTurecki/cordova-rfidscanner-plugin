@@ -42,7 +42,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 							boolean k = rcpAPI.startReadTagsWithRssi(maxTags,
 									maxTime, repeatCycle);
 							if (k = true) {		
-								callbackContext.success("success");
+
 								return true;
 							}
 						} catch (final Exception e) {
@@ -153,6 +153,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 					builder1.setMessage("TID: " + dataText);
 					AlertDialog alert11 = builder1.create();
 					alert11.show();
+					callbackContext.success(dataText);
             	}
         	});
 		}
