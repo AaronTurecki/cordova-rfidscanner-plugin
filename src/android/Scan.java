@@ -156,7 +156,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
               		if (callbackContext != null) {
               			PluginResult result = new PluginResult(PluginResult.Status.OK, dataText);
              			result.setKeepCallback(true);
-                        connectionCallbackContext.success(result);
+                        callbackContext.success(result);
                     }
             	}
         	});
