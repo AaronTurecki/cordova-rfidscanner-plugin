@@ -153,10 +153,10 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
             	public void run(){
             		String dataText = RcpLib.int2str(data);
             		
-            		PluginResult result = new PluginResult(PluginResult.Status.OK, "success");
+            		PluginResult result = new PluginResult(PluginResult.Status.OK);
               		result.setKeepCallback(false);
               		if (callbackContext != null) {
-              			callbackContext.sendPluginResult(result);
+              			callbackContext.sendPluginResult(dataText);
               		}
             	}
         	});
