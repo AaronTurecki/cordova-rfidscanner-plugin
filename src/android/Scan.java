@@ -149,13 +149,13 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	public void onTagMemoryReceived(final int[] data) {
 		// TODO Auto-generated method stub
 		try {
-			cordova.getActivity().runOnUiThread(new Runnable() {
+			cordova.getThreadPool().execute(new Runnable() {
             	public void run(){
             		String dataText = RcpLib.int2str(data);
 
               			PluginResult result = new PluginResult(PluginResult.Status.OK, dataText);
               			result.setKeepCallback(false);
-                        callbackContext.sendPluginResult(result);
+                        callbackContext.success(result);
             	}
         	});
 		}
