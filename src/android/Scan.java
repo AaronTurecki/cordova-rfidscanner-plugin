@@ -23,7 +23,7 @@ import com.phychips.rcp.*;
 public class Scan extends CordovaPlugin implements iRcpEvent2,
 		OnCompletionListener
 {
-	public CallbackContext callbackContext;
+	private CallbackContext callbackContext;
 	public int maxTags = 1;
 	public int maxTime = 100;
 	public int repeatCycle = 0;
@@ -32,8 +32,8 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 
 	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
            super.initialize(cordova, webView);
-           this.connectionCallbackContext = null;
-      }
+           this.callbackContext = null;
+     }
 
 	@Override
 	public boolean execute (String action, JSONArray args, CallbackContext callbackContext) throws JSONException
@@ -155,7 +155,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
             	
             		PluginResult result = new PluginResult(PluginResult.Status.OK, dataText);
               		result.setKeepCallback(true);
-              		connectionCallbackContext.sendPluginResult(result);
+              		callbackContext.sendPluginResult(result);
             	}
         	});
 		}
