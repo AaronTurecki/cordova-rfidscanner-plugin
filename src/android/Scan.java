@@ -25,6 +25,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	public int maxTime = 100;
 	public int repeatCycle = 0;
 	public Byte resultCode = 0x00;
+	public Context context;
 
 	@Override
 	public boolean execute (String action, JSONArray args, CallbackContext callbackContext) throws JSONException
@@ -34,7 +35,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 				rcpAPI.setOnRcpEventListener(this);
 				try {
 					boolean t = rcpAPI.open();
-					// setVolumeMax();
+					setVolumeMax();
 					if (t = true) {
 						try {					
 							boolean k = rcpAPI.startReadTagsWithRssi(maxTags,
@@ -213,17 +214,17 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 
 	}
 	
-  //   private void setVolumeMax()
-  //   {
-  //   	AudioManager audioManager = (AudioManager) cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);
+    private void setVolumeMax()
+    {
+    	AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
 
-		// if (audioManager.getStreamMaxVolume(android.media.AudioManager.STREAM_MUSIC) != audioManager
-		// 		.getStreamVolume(android.media.AudioManager.STREAM_MUSIC))
-		// {
-		// 	audioManager.setStreamVolume(android.media.AudioManager.STREAM_MUSIC, audioManager
-		// 		    .getStreamMaxVolume(android.media.AudioManager.STREAM_MUSIC), 1);
-		// }
-  //   }
+		if (audioManager.getStreamMaxVolume(android.media.AudioManager.STREAM_MUSIC) != audioManager
+				.getStreamVolume(android.media.AudioManager.STREAM_MUSIC))
+		{
+			audioManager.setStreamVolume(android.media.AudioManager.STREAM_MUSIC, audioManager
+				    .getStreamMaxVolume(android.media.AudioManager.STREAM_MUSIC), 1);
+		}
+    }
 
 }
 
