@@ -54,6 +54,13 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 					e.printStackTrace();
 					callbackContext.error(e.getMessage());
 				}
+			}
+
+		    catch (final Exception e) {
+				e.printStackTrace();
+				callback.error(e.getMessage());
+			}
+
 			
 			return true;
 	}
