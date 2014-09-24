@@ -21,7 +21,7 @@ import com.phychips.rcp.*;
 public class Scan extends CordovaPlugin implements iRcpEvent2,
 		OnCompletionListener
 {
-	public CallbackContext callbackContext;
+	private CallbackContext callbackContext;
 	public int maxTags = 1;
 	public int maxTime = 100;
 	public int repeatCycle = 0;
@@ -141,20 +141,20 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	}
 
 	@Override
-	public void onTagMemoryReceived(final int[] data) {
+	public void onTagMemoryReceived(final int[] data, CallbackContext callbackContext) {
 		// TODO Auto-generated method stub
 		try {
 			cordova.getActivity().runOnUiThread(new Runnable() {
             	public void run(){
             		String dataText = RcpLib.int2str(data);
             	
-            		AlertDialog.Builder builder1 = new AlertDialog.Builder(cordova.getActivity());
-					builder1.setMessage("TID: " + dataText);
-					AlertDialog alert11 = builder1.create();
-					alert11.show();
+     //        		AlertDialog.Builder builder1 = new AlertDialog.Builder(cordova.getActivity());
+					// builder1.setMessage("TID: " + dataText);
+					// AlertDialog alert11 = builder1.create();
+					// alert11.show();
 
-					// result = new PluginResult(PluginResult.Status.OK, dataText);
-     //    			callbackContext.sendPluginResult(result);
+					result = new PluginResult(PluginResult.Status.OK, dataText);
+        			this.callbackContext.sendPluginResult(result);
             	}
         	});
 		}
