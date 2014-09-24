@@ -40,25 +40,21 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 							boolean k = rcpAPI.startReadTagsWithRssi(maxTags,
 									maxTime, repeatCycle);
 							if (k = true) {		
-								callbackContext.success("scan worked!");
 								return true;
 							}
 						} catch (final Exception e) {
 							e.printStackTrace();
-							callbackContext.error(e.getMessage());
 						}
 					} else {
 						return false;
 					}
 				} catch (final Exception e) {
 					e.printStackTrace();
-					callbackContext.error(e.getMessage());
 				}
 			}
 
 		    catch (final Exception e) {
 				e.printStackTrace();
-				callback.error(e.getMessage());
 			}
 
 			
