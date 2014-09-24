@@ -29,11 +29,31 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	@Override
 	public boolean execute (String action, JSONArray args, CallbackContext callbackContext) throws JSONException
 	{
-			RcpApi2 rcpAPI = RcpApi2.getInstance();
-			rcpAPI.setOnRcpEventListener(this);
-			boolean t = rcpAPI.open();
-			// // setVolumeMax();
-			boolean k = rcpAPI.startReadTagsWithRssi(maxTags, maxTime, repeatCycle);
+			try {
+				RcpApi2 rcpAPI = RcpApi2.getInstance();
+				rcpAPI.setOnRcpEventListener(this);
+				try {
+					boolean t = rcpAPI.open();
+					// setVolumeMax();
+					if (t = true) {
+						try {					
+							boolean k = rcpAPI.startReadTagsWithRssi(maxTags,
+									maxTime, repeatCycle);
+							if (k = true) {		
+								callbackContext.success("scan worked!");
+								return true;
+							}
+						} catch (final Exception e) {
+							e.printStackTrace();
+							callbackContext.error(e.getMessage());
+						}
+					} else {
+						return false;
+					}
+				} catch (final Exception e) {
+					e.printStackTrace();
+					callbackContext.error(e.getMessage());
+				}
 			
 			return true;
 	}
