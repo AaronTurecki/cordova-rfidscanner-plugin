@@ -143,19 +143,23 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	@Override
 	public void onTagMemoryReceived(final int[] data) {
 		// TODO Auto-generated method stub
-		
-		cordova.getActivity().runOnUiThread(new Runnable() {
-            public void run(){
-            	String dataText = RcpLib.int2str(data);
+		try {
+			cordova.getActivity().runOnUiThread(new Runnable() {
+            	public void run(){
+            		String dataText = RcpLib.int2str(data);
             	
-    //         	AlertDialog.Builder builder1 = new AlertDialog.Builder(cordova.getActivity());
-				// builder1.setMessage("TID: " + dataText);
-				// AlertDialog alert11 = builder1.create();
-				// alert11.show();
+            		AlertDialog.Builder builder1 = new AlertDialog.Builder(cordova.getActivity());
+					builder1.setMessage("TID: " + dataText);
+					AlertDialog alert11 = builder1.create();
+					alert11.show();
 
-				callbackContext.success(dataText);
-            }
-        });
+					// callbackContext.success(dataText);
+            	}
+        	});
+		}
+        catch (final Exception e) {
+				e.printStackTrace();
+		}
 	}
 	
 	@Override
