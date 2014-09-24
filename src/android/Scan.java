@@ -38,6 +38,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	@Override
 	public boolean execute (String action, JSONArray args, CallbackContext callbackContext) throws JSONException
 	{
+		this.callbackContext = callbackContext;
 			try {
 				RcpApi2 rcpAPI = RcpApi2.getInstance();
 				rcpAPI.setOnRcpEventListener(this);
@@ -146,11 +147,10 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	}
 
 	@Override
-	public void onTagMemoryReceived(final int[] data) {
+	private void onTagMemoryReceived(final int[] data) {
 		// TODO Auto-generated method stub
-		this.callbackContext = callbackContext;
 		try {
-			cordova.getThreadPool().execute(new Runnable() {
+			cordova.getActivity().runOnUiThread(new Runnable() {
             	public void run(){
             		String dataText = RcpLib.int2str(data);
 
