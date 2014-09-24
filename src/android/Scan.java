@@ -153,7 +153,7 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 					builder1.setMessage("TID: " + dataText);
 					AlertDialog alert11 = builder1.create();
 					alert11.show();
-					callbackContext.success(dataText);
+					callbackContext.success("dataText");
             	}
         	});
 		}
