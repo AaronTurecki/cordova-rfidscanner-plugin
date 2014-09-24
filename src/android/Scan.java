@@ -28,6 +28,11 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 	public Byte resultCode = 0x00;
 	public Context context;
 
+	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+           super.initialize(cordova, webView);
+           this.connectionCallbackContext = null;
+      }
+
 	@Override
 	public boolean execute (String action, JSONArray args, CallbackContext callbackContext) throws JSONException
 	{
