@@ -55,13 +55,10 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
 					e.printStackTrace();
 				}
 			}
-
 		    catch (final Exception e) {
 				e.printStackTrace();
 			}
-
-			
-			return true;
+			return false;
 	}
 
 	@Override
@@ -149,11 +146,9 @@ public class Scan extends CordovaPlugin implements iRcpEvent2,
             	public void run(){
             		String dataText = RcpLib.int2str(data);
             	
-            		AlertDialog.Builder builder1 = new AlertDialog.Builder(cordova.getActivity());
-					builder1.setMessage("TID: " + dataText);
-					AlertDialog alert11 = builder1.create();
-					alert11.show();
-					callbackContext.success("dataText");
+            		PluginResult result = new PluginResult(PluginResult.Status.OK, dataText);
+              		result.setKeepCallback(true);
+              		connectionCallbackContext.sendPluginResult(result);
             	}
         	});
 		}
